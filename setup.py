@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from cx_Freeze import setup, Executable
+from setuptools import setup
 
 from pytron import name, version
 
@@ -11,8 +11,8 @@ setup(
 	url='https://github.com/ProjectPytron/FreeThePytrons',
 	author='ProjectPytron Developers',
 	author_email='fkmclane@gmail.com',
+	install_requires=['pyglet', 'pymunk'],
 	packages=['pytron', 'pytron.game', 'pytron.story', 'pytron.sandbox'],
 	package_data={'pytron.game': ['res/*.*'], 'pytron.story': ['res/*.*']},
 	scripts=['bin/pytron'],
-	executables=[Executable('bin/pytron')],
 )
