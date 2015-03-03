@@ -7,6 +7,6 @@ A young robotic hero is re-activated by Py, from a race of snake-like beings cal
 Requirements
 ------------
 
-- Python >=3.3
-- pyglet >=1.2
-- pymunk >=4.0.0
+- Python 3.3
+- pyglet 1.2.1
+- pymunk 4.0.0
