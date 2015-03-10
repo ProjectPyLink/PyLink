@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from setuptools import setup
+from setuptools import setup, find_packages
 
 from pytron import name, version
 
@@ -12,7 +12,7 @@ setup(
 	author='ProjectPytron Developers',
 	author_email='fkmclane@gmail.com',
 	install_requires=['pyglet', 'pymunk'],
-	packages=['pytron', 'pytron.game', 'pytron.story', 'pytron.sandbox'],
-	package_data={'pytron.game': ['res/*.*'], 'pytron.story': ['res/*.*']},
-	scripts=['bin/pytron'],
+	packages=find_packages(),
+	package_data={'': ['res/*.*']},
+	entry_points = {'console_scripts': ['pytron = pytron.main']},
 )
