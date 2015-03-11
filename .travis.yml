@@ -4,7 +4,6 @@ python:
   - 3.4
 #  - pypy3
 install:
-  - pip install pytest
   - pip install coverage
   - pip install pytest-cov
   - pip install python-coveralls
