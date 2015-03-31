@@ -6,13 +6,10 @@ import pytron.game.entity
 
 import pytron.state
 
-label = pyglet.text.Label('')
-
 @pytron.state.window.event
 def on_key_press(symbol, modifiers):
-	global label, hero
+	global hero
 
-	label = pyglet.text.Label(pyglet.window.key.symbol_string(symbol))
 	if symbol == pyglet.window.key.Q:
 		pytron.state.window.close()
 
@@ -38,7 +35,6 @@ def on_draw():
 	pytron.state.window.clear()
 	background.draw()
 	pytron.state.world.draw()
-	label.draw()
 
 hero = Hero()
 
