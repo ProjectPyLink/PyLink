@@ -1,15 +1,15 @@
 import pyglet.image
 import pyglet.sprite
 
-import pytron.game.res
+import pytron.game
 
 import pytron.state
 
 class Entity(object):
-	graphic = 'entity.png'
+	res = 'entity'
 
 	def __init__(self):
-		self.image = pyglet.image.load(pytron.game.res.get(self.graphic))
+		self.image = pytron.game.loader.animation(self.res + '.idle.gif')
 		self.sprite = pyglet.sprite.Sprite(self.image, batch=pytron.state.world.batch)
 
 	def move(self, dx, dy):
