@@ -28,12 +28,11 @@ def on_key_press(symbol, modifiers):
 class Hero(pytron.game.entity.Entity):
 	res = 'hero'
 
-background = pyglet.sprite.Sprite(pytron.game.loader.image('pycity.png'))
+background = pyglet.sprite.Sprite(pytron.game.loader.image('pycity.png'), batch=pytron.state.world.batch, group=pytron.state.world.background)
 
 @pytron.state.window.event
 def on_draw():
 	pytron.state.window.clear()
-	background.draw()
 	pytron.state.world.draw()
 
 hero = Hero()
