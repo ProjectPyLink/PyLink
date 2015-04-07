@@ -11,7 +11,7 @@ setup(
 	url='https://github.com/ProjectLink/PyLink',
 	author='ProjectPyLink Developers',
 	author_email='fkmclane@gmail.com',
-	install_requires=['pyglet', 'pymunk'],
+	install_requires=['pyglet>=1.2.2', 'pymunk>=4.0.0'],
 	packages=find_packages(),
 	package_data={'': ['res/*.*']},
 	entry_points = {'console_scripts': ['pylink = pylink.main']},
