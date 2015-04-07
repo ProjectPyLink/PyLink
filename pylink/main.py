@@ -2,16 +2,16 @@ import pyglet.app
 import pyglet.text
 import pyglet.window
 
-import pytron.game.entity
+import pylink.game.entity
 
-import pytron.state
+import pylink.state
 
-@pytron.state.window.event
+@pylink.state.window.event
 def on_key_press(symbol, modifiers):
 	global hero
 
 	if symbol == pyglet.window.key.Q:
-		pytron.state.window.close()
+		pylink.state.window.close()
 
 	if symbol == pyglet.window.key.W:
 		hero.move(0, 10)
@@ -25,15 +25,15 @@ def on_key_press(symbol, modifiers):
 	if symbol == pyglet.window.key.D:
 		hero.move(10, 0)
 
-class Hero(pytron.game.entity.Entity):
+class Hero(pylink.game.entity.Entity):
 	res = 'hero'
 
-background = pyglet.sprite.Sprite(pytron.game.loader.image('pycity.png'), batch=pytron.state.world.batch, group=pytron.state.world.background)
+background = pyglet.sprite.Sprite(pylink.game.loader.image('pycity.png'), batch=pylink.state.world.batch, group=pylink.state.world.background)
 
-@pytron.state.window.event
+@pylink.state.window.event
 def on_draw():
-	pytron.state.window.clear()
-	pytron.state.world.draw()
+	pylink.state.window.clear()
+	pylink.state.world.draw()
 
 hero = Hero()
 

@@ -1,2 +1,2 @@
 @echo off
-python -m pytron.main
+python -m pylink.main
