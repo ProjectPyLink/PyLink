@@ -9,3 +9,6 @@ class World(object):
 
 	def draw(self):
 		self.batch.draw()
+
+	def spawn(self, entity):
+		self.entities.append(entity)

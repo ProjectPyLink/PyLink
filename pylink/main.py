@@ -28,13 +28,18 @@ def on_key_press(symbol, modifiers):
 class Hero(pylink.game.entity.Entity):
 	res = 'hero'
 
-background = pyglet.sprite.Sprite(pylink.game.loader.image('pycity.png'), batch=pylink.state.world.batch, group=pylink.state.world.background)
+hero = Hero()
+
+background_image = pylink.game.loader.image('pycity.png')
+background = pyglet.sprite.Sprite(background_image, batch=pylink.state.world.batch, group=pylink.state.world.background)
 
 @pylink.state.window.event
 def on_draw():
 	pylink.state.window.clear()
 	pylink.state.world.draw()
 
-hero = Hero()
+pyglet.gl.glScalef(4.0, 4.0, 4.0)
+pyglet.gl.glTexParameteri(pyglet.gl.GL_TEXTURE_RECTANGLE, pyglet.gl.GL_TEXTURE_MAG_FILTER, pyglet.gl.GL_NEAREST)
+pyglet.gl.glTexParameteri(pyglet.gl.GL_TEXTURE_2D, pyglet.gl.GL_TEXTURE_MAG_FILTER, pyglet.gl.GL_NEAREST)
 
 pyglet.app.run()
