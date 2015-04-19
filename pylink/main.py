@@ -25,6 +25,18 @@ def on_key_press(symbol, modifiers):
 	if symbol == pyglet.window.key.D:
 		hero.move(10, 0)
 
+	if symbol == pyglet.window.key.UP:
+		pylink.state.camera.move(0, 10)
+
+	if symbol == pyglet.window.key.LEFT:
+		pylink.state.camera.move(-10, 0)
+
+	if symbol == pyglet.window.key.DOWN:
+		pylink.state.camera.move(0, -10)
+
+	if symbol == pyglet.window.key.RIGHT:
+		pylink.state.camera.move(10, 0)
+
 class Hero(pylink.game.entity.Entity):
 	res = 'hero'
 
@@ -38,8 +50,9 @@ def on_draw():
 	pylink.state.window.clear()
 	pylink.state.world.draw()
 
-pyglet.gl.glScalef(4.0, 4.0, 4.0)
 pyglet.gl.glTexParameteri(pyglet.gl.GL_TEXTURE_RECTANGLE, pyglet.gl.GL_TEXTURE_MAG_FILTER, pyglet.gl.GL_NEAREST)
 pyglet.gl.glTexParameteri(pyglet.gl.GL_TEXTURE_2D, pyglet.gl.GL_TEXTURE_MAG_FILTER, pyglet.gl.GL_NEAREST)
+
+pylink.state.camera.scale = 5.0
 
 pyglet.app.run()
