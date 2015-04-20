@@ -1,3 +1,6 @@
+import logging
+logger = logging.getLogger(__name__)
+
 import pyglet.graphics
 
 class World(object):

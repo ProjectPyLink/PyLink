@@ -1,8 +1,12 @@
+import logging
+logger = logging.getLogger(__name__)
+
 import pyglet.app
 import pyglet.text
 import pyglet.window
 
 import pylink.game
+import pylink.game.characters
 import pylink.sandbox
 import pylink.story
 
@@ -39,10 +43,7 @@ def on_key_press(symbol, modifiers):
 	if symbol == pyglet.window.key.RIGHT:
 		pylink.state.camera.move(10, 0)
 
-class Hero(pylink.game.Entity):
-	res = 'hero'
-
-hero = Hero()
+hero = pylink.game.characters.Hero()
 
 background_image = pylink.game.loader.image('pycity.png')
 background = pyglet.sprite.Sprite(background_image, batch=pylink.state.world.batch, group=pylink.state.world.background)

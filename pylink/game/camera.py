@@ -1,3 +1,6 @@
+import logging
+logger = logging.getLogger(__name__)
+
 import pyglet.gl
 
 class Camera(object):
