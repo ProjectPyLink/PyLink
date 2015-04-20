@@ -1,10 +1,7 @@
-import math
-
 import pyglet.gl
 
 class Camera(object):
-	def __init__(self, window, x=0, y=0, rotation=0.0, scale=1.0):
-		self.window = window
+	def __init__(self, x=0, y=0, rotation=0.0, scale=1.0):
 		self._x = x
 		self._y = y
 		self._rotation = rotation
@@ -62,5 +59,4 @@ class Camera(object):
 	@scale.setter
 	def scale(self, scale):
 		self._scale = scale
-		#pyglet.gl.glScalef(scale, scale, scale)
 		pyglet.gl.glScalef(scale, scale, 1)

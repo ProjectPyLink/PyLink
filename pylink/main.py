@@ -2,7 +2,9 @@ import pyglet.app
 import pyglet.text
 import pyglet.window
 
-import pylink.game.entity
+import pylink.game
+import pylink.sandbox
+import pylink.story
 
 import pylink.state
 
@@ -37,7 +39,7 @@ def on_key_press(symbol, modifiers):
 	if symbol == pyglet.window.key.RIGHT:
 		pylink.state.camera.move(10, 0)
 
-class Hero(pylink.game.entity.Entity):
+class Hero(pylink.game.Entity):
 	res = 'hero'
 
 hero = Hero()
