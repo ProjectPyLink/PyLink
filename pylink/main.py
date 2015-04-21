@@ -50,6 +50,8 @@ background = pyglet.sprite.Sprite(background_image, batch=pylink.state.world.bat
 
 @pylink.state.window.event
 def on_draw():
+	print(hero.body.position[0], hero.body.position[1])
+	#TODO: add debug mode where pymunk stuff is drawn
 	pylink.state.window.clear()
 	pylink.state.world.draw()
 
