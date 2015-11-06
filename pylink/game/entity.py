@@ -43,7 +43,7 @@ class Entity(object):
 		self.y = y
 
 	def find(self, type):
-		min_dist = range
+		min_dist = self.range
 		min_ent = None
 
 		for other in self.world.entities:
