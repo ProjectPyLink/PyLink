@@ -8,10 +8,19 @@ class Character(Entity):
 	images = ['idle', 'run', 'jump']
 
 	def animation(function):
-		pass
+		def animation_wrapper(self, *args):
+			try:
+				self.set_image(function.__name__)
+			except NameError:
+				logger.exception('animation not in character')
+			except AttributeError:
+				logger.exception('function not in character')
+
+			return function(self, *args)
 
 	def control(control):
-		def dcontrol(function):
-			pass
+		def control_decoration(function):
+			def control_wrapper(self, *args):
+				pass
 
 		return dcontrol
