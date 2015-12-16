@@ -52,8 +52,8 @@ class Camera(object):
 
 	@rotation.setter
 	def rotation(self, rotation):
-		self._rotation = rotation
 		pyglet.gl.glRotatef(rotation, 0, 0, 1)
+		self._rotation = rotation
 
 	@property
 	def scale(self):
@@ -61,5 +61,5 @@ class Camera(object):
 
 	@scale.setter
 	def scale(self, scale):
-		self._scale = scale
 		pyglet.gl.glScalef(scale, scale, 1)
+		self._scale = scale
