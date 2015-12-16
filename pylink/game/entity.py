@@ -17,10 +17,11 @@ class Entity(object):
 	def __init__(self, x=0, y=0, world=pylink.state.world):
 		self.image_res = {}
 		for image in self.images:
+			filename = self.res + '.' + image + '.gif'
 			try:
-				self.image_res[image] = pylink.game.loader.animation(self.res + '.' + image + '.gif')
+				self.image_res[image] = pylink.game.loader.animation(filename)
 			except pyglet.resource.ResourceNotFoundException:
-				logger.exception('entity image not found')
+				logger.exception('entity image not found: ' + filename)
 
 		self.sprite = pyglet.sprite.Sprite(self.image_res['idle'])
 

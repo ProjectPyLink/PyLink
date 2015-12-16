@@ -12,7 +12,7 @@ class Character(Entity):
 			try:
 				self.set_image(function.__name__)
 			except NameError:
-				logger.exception('animation not in character')
+				logger.exception('animation not in character: ' + function.__name__)
 
 			return function(self, *args)
 
