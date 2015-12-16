@@ -5,7 +5,7 @@ import pyglet.image
 import pyglet.sprite
 
 import pylink.game
-import pylink.game.util
+import pylink.util
 
 import pylink.state
 
@@ -48,7 +48,7 @@ class Entity(object):
 
 		for other in self.world.entities:
 			if isinstance(other, type):
-				dist = pylink.game.util.distance(self.x, self.y, other.x, other.y)
+				dist = pylink.util.distance(self.x, self.y, other.x, other.y)
 				if dist < min_dist:
 					min_dist = dist
 					min_ent = other
