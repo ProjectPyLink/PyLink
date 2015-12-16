@@ -22,12 +22,12 @@ class Entity(object):
 			except pyglet.resource.ResourceNotFoundException:
 				logger.exception('entity image not found')
 
-		self.sprite = pyglet.sprite.Sprite(self.image_res['idle'], batch=pylink.state.world.batch, group=pylink.state.world.foreground)
+		self.sprite = pyglet.sprite.Sprite(self.image_res['idle'])
 
 		self.move_to(x, y)
 
-		self.world = world
-		self.world.spawn(self)
+		if world:
+			self.world.spawn(self)
 
 	def set_image(self, image):
 		self.sprite.image = self.image_res[image]

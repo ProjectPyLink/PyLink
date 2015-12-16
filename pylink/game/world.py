@@ -13,5 +13,10 @@ class World(object):
 	def draw(self):
 		self.batch.draw()
 
-	def spawn(self, entity):
+	def spawn(self, entity, foreground=True):
 		self.entities.append(entity)
+
+		entity.sprite.batch = self.batch
+		entity.sprite.group = self.foreground if foreground else self.background
+
+		entity.world = self
