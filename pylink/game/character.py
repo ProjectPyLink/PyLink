@@ -13,8 +13,6 @@ class Character(Entity):
 				self.set_image(function.__name__)
 			except NameError:
 				logger.exception('animation not in character')
-			except AttributeError:
-				logger.exception('function not in character')
 
 			return function(self, *args)
 
@@ -23,4 +21,4 @@ class Character(Entity):
 			def control_wrapper(self, *args):
 				pass
 
-		return dcontrol
+		return control_decoration
