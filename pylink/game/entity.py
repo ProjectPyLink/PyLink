@@ -28,7 +28,7 @@ class Entity(object):
 		self.move_to(x, y)
 
 		if world:
-			self.world.spawn(self)
+			world.spawn(self)
 
 	def set_image(self, image):
 		self.sprite.image = self.image_res[image]
