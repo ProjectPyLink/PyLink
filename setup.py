@@ -8,7 +8,7 @@ setup(
 	version=version,
 	description='a small game for teaching the basics of object oriented programming using Python',
 	license='MIT',
-	url='https://github.com/ProjectLink/PyLink',
+	url='https://github.com/ProjectPyLink/PyLink',
 	author='ProjectPyLink Developers',
 	author_email='fkmclane@gmail.com',
 	install_requires=['pyglet>=1.2.2', 'pymunk>=4.0.0'],
