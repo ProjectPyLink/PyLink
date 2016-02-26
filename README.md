@@ -13,4 +13,3 @@ Requirements
 
 - Python 3.3
 - pyglet 1.2.2
-- pymunk 4.0.0
