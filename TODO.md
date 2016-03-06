@@ -20,6 +20,13 @@ pylink.game.entity
 - make animation go back to idle on animation end
 
 
+pylink.game.solid
+-----------------
+
+- add velocity, gravity, inertia, shape
+- create update method which updates motion
+
+
 pylink.game.character
 ---------------------
 
