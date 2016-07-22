@@ -6,15 +6,15 @@ import pyglet.window
 import pylink.game
 
 class Hero(pylink.game.Character):
-	res = 'hero'
-	width = 20
-	height = 40
-	speed = 1
-	weight = 40
+    res = 'hero'
+    width = 20
+    height = 40
+    speed = 1
+    weight = 40
 
-	@pylink.game.Character.animation
-	@pylink.game.Character.control(pyglet.window.key.SPACE)
-	def link(self):
-		terminal = self.find(pylink.game.Terminal)
-		if terminal:
-			terminal.activate()
+    @pylink.game.Character.animation
+    @pylink.game.Character.control(pyglet.window.key.SPACE)
+    def link(self):
+        terminal = self.find(pylink.game.Terminal)
+        if terminal:
+            terminal.activate()

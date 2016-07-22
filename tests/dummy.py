@@ -1,2 +1,2 @@
 def test_sanity():
-	assert True
+    assert True

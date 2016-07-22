@@ -14,5 +14,5 @@ setup(
 	install_requires=['pyglet>=1.2.2'],
 	packages=find_packages(),
 	package_data={'': ['res/*.*']},
-	entry_points = {'console_scripts': ['pylink = pylink.main']},
+	entry_points={'console_scripts': ['pylink = pylink.main']},
 )
