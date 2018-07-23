@@ -12,8 +12,11 @@ class Hero(pylink.game.Character):
     speed = 1
     weight = 40
 
+    controls = {
+        pyglet.window.key.SPACE: 'link',
+    }
+
     @pylink.game.Character.animation
-    @pylink.game.Character.control(pyglet.window.key.SPACE)
     def link(self):
         terminal = self.find(pylink.game.Terminal)
         if terminal:

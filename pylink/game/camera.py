@@ -10,13 +10,7 @@ class Camera(object):
         self._rotation = rotation
         self._scale = scale
 
-    def move(self, dx, dy):
-        pyglet.gl.glTranslatef(dx, dy, 0)
-        self._x += dx
-        self._y += dy
-
-    def move_to(self, x, y):
-        self.position = x, y
+        self._subscribers = set()
 
     @property
     def x(self):
@@ -25,7 +19,11 @@ class Camera(object):
     @x.setter
     def x(self, x):
         pyglet.gl.glTranslatef(x - self._x, 0, 0)
+
         self._x = x
+
+        for subscriber in self._subscribers:
+            subscriber.camera_update(self)
 
     @property
     def y(self):
@@ -34,7 +32,11 @@ class Camera(object):
     @y.setter
     def y(self, y):
         pyglet.gl.glTranslatef(0, y - self._y, 0)
+
         self._y = y
+
+        for subscriber in self._subscribers:
+            subscriber.camera_update(self)
 
     @property
     def position(self):
@@ -43,8 +45,13 @@ class Camera(object):
     @position.setter
     def position(self, position):
         x, y = position
+
         pyglet.gl.glTranslatef(x - self._x, y - self._y, 0)
+
         self._x, self._y = position
+
+        for subscriber in self._subscribers:
+            subscriber.camera_update(self)
 
     @property
     def rotation(self):
@@ -53,7 +60,11 @@ class Camera(object):
     @rotation.setter
     def rotation(self, rotation):
         pyglet.gl.glRotatef(rotation, 0, 0, 1)
+
         self._rotation = rotation
+
+        for subscriber in self._subscribers:
+            subscriber.camera_update(self)
 
     @property
     def scale(self):
@@ -62,4 +73,30 @@ class Camera(object):
     @scale.setter
     def scale(self, scale):
         pyglet.gl.glScalef(scale, scale, 1)
+
         self._scale = scale
+
+        for subscriber in self._subscribers:
+            subscriber.camera_update(self)
+
+    @property
+    def subscribers(self):
+        return list(self._subscribers)
+
+    def move(self, dx, dy):
+        pyglet.gl.glTranslatef(dx, dy, 0)
+
+        self._x += dx
+        self._y += dy
+
+        for subscriber in self._subscribers:
+            subscriber.camera_update(self)
+
+    def move_to(self, x, y):
+        self.position = x, y
+
+    def subscribe(self, subscriber):
+        self._subscribers.add(subscriber)
+
+    def unsubscribe(self, subscriber):
+        self._subscribers.remove(subscriber)

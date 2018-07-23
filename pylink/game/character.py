@@ -1,11 +1,20 @@
 import logging
 logger = logging.getLogger(__name__)
 
-from pylink.game.entity import Entity
+import collections
 
-class Character(Entity):
+import pylink.state
+
+from . import entity
+
+class Character(entity.Entity):
     res = 'character'
     images = ['idle', 'run', 'jump']
+
+    def __init__(self, *args):
+        pylink.state.control.subscribe(self)
+
+        super().__init__(*args)
 
     def animation(function):
         def animation_wrapper(self, *args):
@@ -16,9 +25,10 @@ class Character(Entity):
 
             return function(self, *args)
 
-    def control(control):
-        def control_decoration(function):
-            def control_wrapper(self, *args):
-                pass
+        return animation_wrapper
 
-        return control_decoration
+    def control_key_press(self, symbol, modifiers):
+        if symbol not in self.controls:
+            return
+
+        getattr(self, self.controls[symbol])()

@@ -4,10 +4,11 @@ logger = logging.getLogger(__name__)
 import pyglet.image
 import pyglet.sprite
 
-import pylink.game
 import pylink.util
 
 import pylink.state
+
+from . import resource
 
 class Entity(object):
     res = 'entity'
@@ -19,7 +20,7 @@ class Entity(object):
         for image in self.images:
             filename = self.res + '.' + image + '.gif'
             try:
-                self.image_res[image] = pylink.game.loader.animation(filename)
+                self.image_res[image] = resource.loader.animation(filename)
             except pyglet.resource.ResourceNotFoundException:
                 logger.exception('entity image not found: ' + filename)
 
@@ -35,11 +36,13 @@ class Entity(object):
 
     def move(self, dx, dy):
         self.sprite.set_position(self.sprite.x+dx, self.sprite.y+dy)
+
         self.x += dx
         self.y += dy
 
     def move_to(self, x, y):
         self.sprite.set_position(x, y)
+
         self.x = x
         self.y = y
 
