@@ -58,3 +58,6 @@ class Entity(object):
                     min_ent = other
 
         return min_ent
+
+    def update(self, delta):
+        pass

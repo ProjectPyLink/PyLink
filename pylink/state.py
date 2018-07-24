@@ -1,10 +1,8 @@
-import pyglet.window
+from pyglet.window import Window
 
 from pylink.game.camera import Camera
-from pylink.game.control import Control
 from pylink.game.world import World
 
-window = pyglet.window.Window()
-control = Control(window)
-camera = Camera()
-world = World()
+window = Window()
+world = World(window)
+camera = Camera(world)

@@ -4,13 +4,15 @@ logger = logging.getLogger(__name__)
 import pyglet.gl
 
 class Camera(object):
-    def __init__(self, x=0, y=0, rotation=0.0, scale=1.0):
+    def __init__(self, world, x=0, y=0, rotation=0.0, scale=1.0):
         self._x = x
         self._y = y
         self._rotation = rotation
         self._scale = scale
 
         self._subscribers = set()
+
+        self.world = world
 
     @property
     def x(self):
@@ -23,7 +25,7 @@ class Camera(object):
         self._x = x
 
         for subscriber in self._subscribers:
-            subscriber.camera_update(self)
+            subscriber.camera(self)
 
     @property
     def y(self):
@@ -36,7 +38,7 @@ class Camera(object):
         self._y = y
 
         for subscriber in self._subscribers:
-            subscriber.camera_update(self)
+            subscriber.camera(self)
 
     @property
     def position(self):
@@ -51,7 +53,7 @@ class Camera(object):
         self._x, self._y = position
 
         for subscriber in self._subscribers:
-            subscriber.camera_update(self)
+            subscriber.camera(self)
 
     @property
     def rotation(self):
@@ -64,7 +66,7 @@ class Camera(object):
         self._rotation = rotation
 
         for subscriber in self._subscribers:
-            subscriber.camera_update(self)
+            subscriber.camera(self)
 
     @property
     def scale(self):
@@ -77,7 +79,7 @@ class Camera(object):
         self._scale = scale
 
         for subscriber in self._subscribers:
-            subscriber.camera_update(self)
+            subscriber.camera(self)
 
     @property
     def subscribers(self):
@@ -90,7 +92,7 @@ class Camera(object):
         self._y += dy
 
         for subscriber in self._subscribers:
-            subscriber.camera_update(self)
+            subscriber.camera(self)
 
     def move_to(self, x, y):
         self.position = x, y
