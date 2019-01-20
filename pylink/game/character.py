@@ -14,17 +14,6 @@ class Character(entity.Entity):
     images = ['idle', 'run', 'jump']
     controls = {}
 
-    def animation(function):
-        def animation_wrapper(self, *args):
-            try:
-                self.set_image(function.__name__)
-            except NameError:
-                logger.exception('animation not in character: ' + function.__name__)
-
-            return function(self, *args)
-
-        return animation_wrapper
-
     def __init__(self, *args):
         self.keys = pyglet.window.key.KeyStateHandler()
 

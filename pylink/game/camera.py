@@ -10,8 +10,6 @@ class Camera(object):
         self._rotation = rotation
         self._scale = scale
 
-        self._subscribers = set()
-
         self.world = world
 
     @property
@@ -24,9 +22,6 @@ class Camera(object):
 
         self._x = x
 
-        for subscriber in self._subscribers:
-            subscriber.camera(self)
-
     @property
     def y(self):
         return self._y
@@ -36,9 +31,6 @@ class Camera(object):
         pyglet.gl.glTranslatef(0, y - self._y, 0)
 
         self._y = y
-
-        for subscriber in self._subscribers:
-            subscriber.camera(self)
 
     @property
     def position(self):
@@ -52,9 +44,6 @@ class Camera(object):
 
         self._x, self._y = position
 
-        for subscriber in self._subscribers:
-            subscriber.camera(self)
-
     @property
     def rotation(self):
         return self._rotation
@@ -64,9 +53,6 @@ class Camera(object):
         pyglet.gl.glRotatef(rotation, 0, 0, 1)
 
         self._rotation = rotation
-
-        for subscriber in self._subscribers:
-            subscriber.camera(self)
 
     @property
     def scale(self):
@@ -78,27 +64,11 @@ class Camera(object):
 
         self._scale = scale
 
-        for subscriber in self._subscribers:
-            subscriber.camera(self)
-
-    @property
-    def subscribers(self):
-        return list(self._subscribers)
-
     def move(self, dx, dy):
         pyglet.gl.glTranslatef(dx, dy, 0)
 
         self._x += dx
         self._y += dy
 
-        for subscriber in self._subscribers:
-            subscriber.camera(self)
-
     def move_to(self, x, y):
         self.position = x, y
-
-    def subscribe(self, subscriber):
-        self._subscribers.add(subscriber)
-
-    def unsubscribe(self, subscriber):
-        self._subscribers.remove(subscriber)

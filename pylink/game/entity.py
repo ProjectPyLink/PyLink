@@ -61,3 +61,14 @@ class Entity(object):
 
     def update(self, delta):
         pass
+
+def animation(function):
+    def animation_wrapper(self, *args):
+        try:
+            self.set_image(function.__name__)
+        except NameError:
+            logger.exception('animation not in entity: ' + function.__name__)
+
+        return function(self, *args)
+
+    return animation_wrapper

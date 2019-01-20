@@ -1,1 +1,1 @@
-from pylink.game.characters.hero import Hero
+from .hero import Hero
